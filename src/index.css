@@ -1,0 +1,325 @@
+
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #101114;
+  color: #f5f5f5;
+  font-family: Inter, Arial, sans-serif;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101114;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6b1a;
+  border-radius: 10px;
+  border: 2px solid #101114;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff853d;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff6b1a #101114;
+}
+
+/* Text Selection */
+::selection {
+  background: #ff6b1a;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #ff6b1a;
+  color: #ffffff;
+}
+
+/* Bengali Font */
+.bengali-text {
+  font-family: "Tiro Bangla", serif;
+  font-weight: 500;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+
+
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+  height: 76px;
+  width: 100%;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  background: #101114;
+  border-bottom: 1px solid #292b30;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+
+  background: #ff6b1a;
+  color: #101114;
+
+  font-size: 30px;
+  font-weight: 900;
+  font-style: italic;
+
+  clip-path: polygon(
+    28% 0,
+    100% 0,
+    72% 100%,
+    0 100%
+  );
+}
+
+.logo-text h2 {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+
+.logo-text span {
+  display: block;
+  text-align: right;
+  color: #ff6b1a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+/* NAV LINKS */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+}
+
+.nav-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  color: #c5c7ce;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ff6b1a;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background: #ff6b1a;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* SEARCH */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #1b1e24;
+  border: 1px solid #292c33;
+  border-radius: 30px;
+
+  padding: 11px 15px;
+  color: #aeb2bc;
+  width: 250px;
+}
+
+.nav-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 12px;
+}
+
+.nav-search input::placeholder {
+  color: #9296a0;
+}
+
+.nav-contact {
+  display: grid;
+  place-items: center;
+  color: #f5f5f5;
+  transition: 0.25s;
+}
+
+.nav-contact:hover {
+  color: #ff6b1a;
+}
+
+.mobile-menu {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+  .navbar {
+    padding: 0 4%;
+    gap: 18px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-search {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 70px;
+    padding: 0 18px;
+  }
+
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 25px;
+  }
+
+  .logo-text h2 {
+   font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .logo-text span {
+    font-size: 7px;
+    letter-spacing: 1.2px;
+  }
+
+  .nav-links {
+    display: none;
+
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+
+    height: auto;
+    padding: 12px 20px;
+
+    background: #101114;
+    border-bottom: 1px solid #292b30;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    height: 48px;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-actions {
+    gap: 15px;
+  }
+
+  .nav-search {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    justify-content: center;
+  }
+
+  .nav-search input {
+    display: none;
+  }
+
+  .nav-contact {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: grid;
+    place-items: center;
+  }
+}
+
